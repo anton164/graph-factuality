@@ -14,5 +14,7 @@ flake8 models/
 
 #### Generate baseline summaries
 ```
-python models/pretrained_baseline.py test 1
+python scripts/baseline_xsum_summaries.py
 ```
+
+Summaries are stored in [data/xsum/](`data/xsum/`)
