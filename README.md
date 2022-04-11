@@ -17,4 +17,4 @@ flake8 models/
 python scripts/baseline_xsum_summaries.py
 ```
 
-Summaries are stored in [data/xsum/](`data/xsum/`)
+Summaries are stored in [data/xsum/](data/xsum/)
