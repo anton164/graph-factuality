@@ -2,3 +2,7 @@ torch
 transformers
 datasets
 git+https://github.com/factula/sumtool
+absl-py
+nltk
+rouge_score
+bert_score

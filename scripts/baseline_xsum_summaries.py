@@ -1,5 +1,4 @@
 import argparse
-import datasets
 from sumtool.generate_xsum_summary import (
     load_summarization_model_and_tokenizer,
     generate_summaries,
