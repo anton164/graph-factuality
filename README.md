@@ -1,3 +1,5 @@
+- [Our ASGARD Model Fork](https://github.com/anton164/GraphAugmentedSum)
+
 ### Setup
 Python 3.8
 ```
