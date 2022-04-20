@@ -2,15 +2,17 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import os
+from pathlib import Path
+
 st.set_page_config(layout="wide")
 
 st.title('Comparison of Summaries')
 
-ref_loc = st.text_input("Location of reference dataset", "/Users/Lars/Downloads/refs")
-summary_1_loc = st.text_input("Location of generated summary", "/Users/Lars/Downloads/output")
-summary_2_loc = st.text_input("Location of generated summary (second)", "/Users/Lars/Downloads/output-2")
+ref_loc = st.text_input("Location of reference dataset", "results/refs")
+summary_1_loc = st.text_input("Location of generated summary", "results/output-us")
+summary_2_loc = st.text_input("Location of generated summary (second)", "results/output-them")
 
-all_files = os.listdir(ref_loc)
+all_files = os.listdir(Path(ref_loc))
 
 file_selected = st.selectbox("Select file to compare", all_files)
 file_number = file_selected.strip(".ref")
