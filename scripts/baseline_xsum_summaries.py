@@ -5,6 +5,7 @@ from sumtool.generate_xsum_summary import (
 )
 from datasets import load_dataset
 from sumtool.storage import store_model_summaries
+from metrics import bertscore, rouge
 
 
 if __name__ == "__main__":
@@ -21,6 +22,7 @@ if __name__ == "__main__":
     for x in xsum_data:
         i += 1
         gen_summary = generate_summaries(model, tokenizer, x["document"])
+        gt_summary = x["summary"]
 
         store_model_summaries(
             "xsum",
