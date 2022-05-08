@@ -1,0 +1,3 @@
+FEQA on sample_documents/ and sample_summaries/
+mean: 0.7620370370370371
+all: [0.674074074074074, 0.85]
