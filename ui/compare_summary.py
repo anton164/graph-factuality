@@ -1,3 +1,4 @@
+# from sys import orig_argv
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -11,11 +12,19 @@ st.title('Comparison of Summaries')
 ref_loc = st.text_input("Location of reference dataset", "results/refs")
 summary_1_loc = st.text_input("Location of generated summary", "results/output-us")
 summary_2_loc = st.text_input("Location of generated summary (second)", "results/output-them")
+orig_article_loc = st.text_input("Location of original article", "data/original-articles")
 
 all_files = os.listdir(Path(ref_loc))
 
 file_selected = st.selectbox("Select file to compare", all_files)
 file_number = file_selected.strip(".ref")
+
+st.header("Original article")
+load_article = st.checkbox("Load original article")
+if load_article:
+    with open(orig_article_loc + "/" + file_number, 'r') as f:
+        orig_text = f.read()
+    st.write(orig_text)
 
 col1, col2, col3 = st.columns(3)
 
