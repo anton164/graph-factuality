@@ -67,7 +67,7 @@ if __name__ == "__main__":
 
     tokenizer = RobertaTokenizer.from_pretrained("roberta-base")
     model = EncoderDecoderModel.from_pretrained("patrickvonplaten/roberta2roberta-cnn_dailymail-fp16")
-    # model.to(device)
+    model.to(device)
 
     cnn_data = load_dataset("ccdv/cnn_dailymail", "3.0.0")["test"]
     total = len(cnn_data)
