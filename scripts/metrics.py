@@ -1,14 +1,14 @@
 from datasets import load_metric
 import datasets
 
-bertscore_metric = load_metric("bertscore")
-rouge_metric = datasets.load_metric("rouge")
+_bertscore_metric = load_metric("bertscore")
+_rouge_metric = datasets.load_metric("rouge")
 
 
 def bertscore(predictions: list, references: list):
     # There is an optional device argument which will load the model on cuda
     # if it's available, otherwise it defaults to cpu
-    results = bertscore_metric.compute(
+    results = _bertscore_metric.compute(
         predictions=predictions,
         references=references,
         model_type="distilbert-base-uncased",
@@ -25,13 +25,14 @@ def bertscore(predictions: list, references: list):
 
 
 def rouge(predictions: list, references: list):
-    results = rouge_metric.compute(
+    results = _rouge_metric.compute(
         predictions=predictions,
         references=references,
         use_stemmer=True,
     )
     # types: rouge1, rouge2, rougeL
     # Use mid for every score because it is the mean of all inputs
+    # high gives the 95th %ile score and low gives the 5th %ile
     scores = {
         "rouge1": {
             "precision": results["rouge1"].mid.precision,
