@@ -6,3 +6,5 @@ absl-py
 nltk
 rouge_score
 bert_score
+streamlit
+watchdog

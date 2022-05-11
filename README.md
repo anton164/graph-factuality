@@ -8,6 +8,11 @@ pip install -r requirements.txt
 pip install -r requirements.dev.txt
 ```
 
+### UI
+```
+streamlit run ui/compare_summary.py
+```
+
 ### Lint & formatting
 ```
 black models/
