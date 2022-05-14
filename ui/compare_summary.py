@@ -27,6 +27,8 @@ load_article = st.checkbox("Load original article", value=True)
 if load_article:
     with open(orig_article_loc + "/" + file_number, 'r') as f:
         orig_text = f.read()
+        
+    orig_text = orig_text.replace("`", "'")
     st.write(orig_text)
 
 col1, col2, col3 = st.columns(3)
@@ -35,6 +37,7 @@ with col1:
     st.header("Reference")
     with open(ref_loc + "/" + file_selected, 'r') as f:
         ref_text = f.read()
+    ref_text = ref_text.replace("`", "'")
     st.write(ref_text)
 
 with col2:
@@ -43,6 +46,7 @@ with col2:
     if load_sum_1:
         with open(summary_1_loc + "/" + file_number + ".dec", 'r') as f:
             sum_text = f.read()
+        sum_text = sum_text.replace("`", "'")
         st.write(sum_text)
 
 with col3:
@@ -51,4 +55,5 @@ with col3:
     if load_sum_2:
         with open(summary_2_loc + "/" + file_number + ".dec", 'r') as f:
             sum_text = f.read()
+        sum_text = sum_text.replace("`", "'")
         st.write(sum_text)
