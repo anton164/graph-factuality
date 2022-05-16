@@ -2,19 +2,24 @@ import os
 import json
 from sys import argv
 from metrics import bertscore, rouge
+from tqdm import tqdm
 
 if __name__ == "__main__":
     who = 'baseline'
     if len(argv) > 1:
         who = argv[1]
     scores = {}
-    with open(f"./data/results/{who}-scores.json", "r") as f:
-        scores = json.load(f)
+    if os.path.exists(f"./data/results/{who}-scores.json"):
+        with open(f"./data/results/{who}-scores.json", "r") as f:
+            scores = json.load(f)
+
+            scores = {k:v for k,v in scores.items() if k.endswith(".ref")}
 
     if len(scores) == 0:
-        ref_files = os.listdir(r"results/refs")
-        asgard_files = os.listdir(f"results/output-{who}")
-        for ref_fn, asgard_fn in zip(ref_files, asgard_files):
+        ref_files = set([x for x in os.listdir(r"results/refs") if x.endswith(".ref")])
+        asgard_files = sorted([x for x in os.listdir(f"results/output-{who}") if x.endswith(".dec")])
+        for asgard_fn in tqdm(asgard_files):
+            ref_fn = asgard_fn.replace(".dec", ".ref")
             ref_path = os.path.join(r"results/refs", ref_fn)
             pred_path = os.path.join(f"results/output-{who}", asgard_fn)
             with open(ref_path, 'r') as f:
